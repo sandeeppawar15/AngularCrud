@@ -35,7 +35,6 @@ export class AdduserComponent implements OnInit {
   isSubmitted: boolean;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   pipe: any;
-  // password: string = '';
 
   constructor(private router: Router, private v: ValidatorService, private userService: UserService) {
 
@@ -107,8 +106,6 @@ export class AdduserComponent implements OnInit {
       this.router.navigateByUrl('/userdashboard');
 
     })
-
-    // console.log(JSON.stringify(frmData));
     console.log(JSON.stringify(this.FormAddUser.value));
   }
 
