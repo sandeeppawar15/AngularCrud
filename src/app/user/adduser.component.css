@@ -1,0 +1,20 @@
+.form_outlet {
+  position: relative;
+  padding: 1rem;
+  /* margin: 1rem -15px 0; */
+  border: solid #f8f9fa;
+  border-width: 0.2rem 0 0;
+}
+
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.btnCls {
+  float: right;
+}
+
+p.errorMsg {
+  margin-left: 252px;
+}

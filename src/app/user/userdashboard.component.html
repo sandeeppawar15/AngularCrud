@@ -1,0 +1,40 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: aliceblue;">My App</h1>
+    <div class="d-flex">
+      <button class="btn btn-success" type="button" (click)="btnClick()">
+        Add User
+      </button>
+    </div>
+  </div>
+</nav>
+<table class="table mt-3 table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">User ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email Id</th>
+      <th scope="col">Status</th>
+      <th scope="col">Registered On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let user of users">
+      <td>{{user.tblUserId}}</td>
+      <td>{{user.firstName}} {{user.laststName}}</td>
+      <td>{{user.userName}}</td>
+      <td>{{user.emailId}}</td>
+      <td *ngIf="user.status===true">Active</td>
+      <td *ngIf="user.status===false">InActive</td>
+      <td>{{user.createdOn | date: 'dd/MM/yyyy hh:mm a'}}</td>
+      <td>
+        <button class="btn btn-info">Edit</button>
+        <button class="btn btn-danger mx-3">Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

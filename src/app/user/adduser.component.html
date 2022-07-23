@@ -1,0 +1,110 @@
+<div class="form_outlet">
+  <form [formGroup]="FormAddUser">
+
+    <div class="form-group row">
+      <label for="Username" class="col-sm-2 col-form-label">Username</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="Username" placeholder="Username" formControlName="userName">
+      </div>
+      <div *ngIf="isSubmitted&&form.userName.errors" class="text-danger">
+        <p *ngIf="form.userName.errors.required" class="errorMsg">Please enter username.</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
+      </div>
+      <div *ngIf="isSubmitted&&form.firstName.errors" class="text-danger">
+        <p *ngIf="form.firstName.errors.required" class="errorMsg">Please enter first name.</p>
+      </div>
+    </div>
+    <!-- {{FormAddUser.get('firstName')?.valid}} -->
+
+    <div class="form-group row">
+      <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+      </div>
+      <div *ngIf="isSubmitted&&form.lastName.errors" class="text-danger">
+        <p *ngIf="form.lastName.errors.required" class="errorMsg">Please enter last name.</p>
+      </div>
+    </div>
+
+    <!-- <div class="form-group row">
+      <label for="lastName" class="col-sm-2 col-form-label">Profile</label>
+      <div class="col-sm-3">
+        <select class="form-select" formControlName="fruits">
+          <option disabled>Choose Value</option>
+          <option value="">Choose Fruit</option>
+          <option *ngFor="let fruit of Fruits">
+            {{fruit}}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="isSubmitted&&form.fruits.errors" class="text-danger">
+        <p *ngIf="form.fruits.errors.required" class="errorMsg">Please select value.</p>
+      </div>
+    </div> -->
+
+    <div class="form-group row">
+      <label for="lastName" class="col-sm-2 col-form-label">Profile</label>
+      <div class="col-sm-3">
+        <select class="form-select" formControlName="roles">
+          <option disabled>Choose Value</option>
+          <option value="">Choose Role</option>
+          <option *ngFor="let role of Roles" value="{{role.TblRoleId}}">
+            {{role.role}}
+          </option>
+        </select>
+      </div>
+      <div *ngIf=" isSubmitted&&form.roles.errors" class="text-danger">
+        <p *ngIf="form.roles.errors.required" class="errorMsg">Please select role.</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
+      </div>
+      <div *ngIf="isSubmitted&&form.email.errors" class="text-danger">
+        <p *ngIf="form.email.errors.required" class="errorMsg">Please enter email id.</p>
+        <p *ngIf="form.email.errors.pattern" class="errorMsg">Please enter valid email address</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+      </div>
+      <div *ngIf="isSubmitted&&form.password.errors" class="text-danger">
+        <p *ngIf="form.password.errors.required" class="errorMsg">Please enter password.</p>
+        <p *ngIf="form.password.errors.minlength" class="errorMsg">Password must be at least 6 characters</p>
+        <!-- <p *ngIf="form.password.errors.pattern" class="errorMsg">password should contain atleast one number and one
+          special character</p> -->
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+          formControlName="confirmPassword">
+      </div>
+      <div *ngIf="isSubmitted&&form.confirmPassword.errors" class="text-danger">
+        <p *ngIf="form.confirmPassword.errors.required" class="errorMsg">Please enter the same password as above.</p>
+        <p *ngIf="form.confirmPassword.errors.passwordMismatch" class="errorMsg">Password and confirm password not match.</p>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-primary btnCls  mx-3" (click)="btnClick()">Back</button>
+        <button type="submit" class="btn btn-primary btnCls" (click)="submitForm()">Sign in</button>
+      </div>
+    </div>
+  </form>
+</div>
