@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  baseurl = "https://localhost:7210/api/users";
+  baseurl = "http://localhost:90/api/users";
   // postUrl = "https://jsonplaceholder.typicode.com/posts";
 
 
@@ -22,8 +22,8 @@ export class UserService {
     return this.http.post(this.baseurl + '/', body, { 'headers': headers });
   }
 
-  // deleteUser(userId:number){
-  //   return this.http.delete(this.baseurl + '/', body, { 'headers': headers });
-  // }
+  deleteUser(userId: number) {
+    return this.http.delete(this.baseurl + '/' + userId);
+  }
 
 }
