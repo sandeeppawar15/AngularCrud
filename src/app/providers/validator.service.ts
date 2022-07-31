@@ -7,7 +7,7 @@ export class ValidatorService {
   constructor() { }
 
   passwordMatch(password: string, confirmPassword: string): ValidatorFn {
-    
+
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
 
       const passwordControl = formGroup.get(password);
@@ -30,4 +30,28 @@ export class ValidatorService {
       }
     };
   }
+
+  // isEmailExist(emailId: string): ValidatorFn {
+  //   return (formGroup: AbstractControl): { [key: string]: any } | null{
+  //     const emailControl = formGroup.get(emailId);
+
+  //     if (!emailControl) {
+  //       return null;
+  //     }
+
+  //     if (emailControl.errors) {
+  //       return null;
+  //     }
+
+  //     if (emailControl.value === 'sandeeppawar.pawar15@gmail.com') {
+  //       emailControl.setErrors({ emailExist: true });
+  //       return { emailExist: true };
+  //     } else {
+  //       emailControl.setErrors(null);
+  //       return null;
+  //     }
+
+  //   };
+  // }
+
 }

@@ -16,5 +16,6 @@
 }
 
 p.errorMsg {
-  margin-left: 252px;
+  margin-left: 255px;
+  font-size: 12px;
 }

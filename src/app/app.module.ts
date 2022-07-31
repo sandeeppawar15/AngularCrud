@@ -9,11 +9,13 @@ import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidatorService } from './providers/validator.service';
+import { BarchartComponent } from './chart/barchart/barchart.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BarchartComponent
     
   ],
   imports: [

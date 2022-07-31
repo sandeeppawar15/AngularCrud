@@ -33,14 +33,14 @@ export class AdduserComponent implements OnInit {
   roleid: number;
   FormAddUser: FormGroup;
   isSubmitted: boolean;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = "^[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   pipe: any;
 
   constructor(private router: Router, private v: ValidatorService, private userService: UserService) {
 
     this.userService.getData().subscribe(data => {
       console.log(data)
-    });    
+    });
   }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class AdduserComponent implements OnInit {
     },
       {
         validators: this.v.passwordMatch("password", "confirmPassword")
-      }
+      },
     );
   }
 
@@ -70,9 +70,6 @@ export class AdduserComponent implements OnInit {
 
   submitForm() {
 
-    const today = new Date();
-    const pipe = new DatePipe('en-US')
-
     this.isSubmitted = true;
 
     if (this.FormAddUser.invalid) {
@@ -85,8 +82,9 @@ export class AdduserComponent implements OnInit {
       userName: string,
       password: string,
       emailId: string,
-      status: true,
-      createdOn: string
+      status: true
+      // ,
+      // createdOn: string
     } =
 
     {
@@ -96,13 +94,15 @@ export class AdduserComponent implements OnInit {
       "userName": this.FormAddUser.value['userName'],
       "password": this.FormAddUser.value['password'],
       "emailId": this.FormAddUser.value['email'],
-      "status": true,
-      "createdOn":"2022-07-19"
+      "status": true
+      // ,
+      // "createdOn": "2022-07-19"
     };
 
     this.userService.saveData(frmData).subscribe((result) => {
       console.log("Inside savedata");
       console.log(result);
+      alert("Record has been added successfully.");
       this.router.navigateByUrl('/userdashboard');
 
     })

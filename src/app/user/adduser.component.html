@@ -96,7 +96,8 @@
       </div>
       <div *ngIf="isSubmitted&&form.confirmPassword.errors" class="text-danger">
         <p *ngIf="form.confirmPassword.errors.required" class="errorMsg">Please enter the same password as above.</p>
-        <p *ngIf="form.confirmPassword.errors.passwordMismatch" class="errorMsg">Password and confirm password not match.</p>
+        <p *ngIf="form.confirmPassword.errors.passwordMismatch" class="errorMsg">Password and confirm password not
+          match.</p>
       </div>
     </div>
 
