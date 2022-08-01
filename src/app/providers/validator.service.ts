@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UserService } from './user.service';
+
 
 @Injectable()
 
 export class ValidatorService {
-  constructor() { }
+
+  constructor(private userService: UserService) { }
 
   passwordMatch(password: string, confirmPassword: string): ValidatorFn {
+    console.log("tetetete");
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
 
@@ -31,27 +35,35 @@ export class ValidatorService {
     };
   }
 
-  // isEmailExist(emailId: string): ValidatorFn {
-  //   return (formGroup: AbstractControl): { [key: string]: any } | null{
-  //     const emailControl = formGroup.get(emailId);
+  isEmailExist(emailId: string): ValidatorFn {
 
-  //     if (!emailControl) {
-  //       return null;
-  //     }
+    return (formGroup: AbstractControl): { [key: string]: any } | null => {
+      const emailControl = formGroup.get(emailId);
+      console.log(emailControl?.value);
+      if (!emailControl) {
+        return null;
+      }
 
-  //     if (emailControl.errors) {
-  //       return null;
-  //     }
+      if (emailControl.errors) {
+        return null;
+      }
 
-  //     if (emailControl.value === 'sandeeppawar.pawar15@gmail.com') {
-  //       emailControl.setErrors({ emailExist: true });
-  //       return { emailExist: true };
-  //     } else {
-  //       emailControl.setErrors(null);
-  //       return null;
-  //     }
+      //fetch the records matching to given email address if any
+      this.userService.checkIsEmailIdExist(emailControl?.value).subscribe((result) => {
+        console.log("Inside checkIsEmailIdExist");
+        console.log(result);
+      })
 
-  //   };
-  // }
+      if (emailControl.value === 'sandeeppawar.pawar15@gmail.com') {
+        emailControl.setErrors({ emailExist: true });
+        return { emailExist: true };
+      } else {
+        console.log("in else", emailControl);
+        emailControl.setErrors(null);
+        return null;
+      }
+
+    };
+  }
 
 }

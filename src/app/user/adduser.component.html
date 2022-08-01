@@ -72,6 +72,7 @@
       <div *ngIf="isSubmitted&&form.email.errors" class="text-danger">
         <p *ngIf="form.email.errors.required" class="errorMsg">Please enter email id.</p>
         <p *ngIf="form.email.errors.pattern" class="errorMsg">Please enter valid email address</p>
+        <p *ngIf="form.email.errors.emailExist" class="errorMsg">Email address already exist.</p>
       </div>
     </div>
 

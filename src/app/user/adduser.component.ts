@@ -3,8 +3,7 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { UserService } from '../providers/user.service';
 import { ValidatorService } from '../providers/validator.service';
-import { DatePipe } from '@angular/common';
-import * as CryptoJS from 'crypto-js';
+
 
 
 interface IRoles {
@@ -54,8 +53,9 @@ export class AdduserComponent implements OnInit {
       roles: new FormControl('', Validators.required)
     },
       {
-        validators: this.v.passwordMatch("password", "confirmPassword")
-      },
+        //validators: this.v.passwordMatch("password", "confirmPassword"),
+        validators: this.v.isEmailExist("email")
+      }
     );
   }
 
