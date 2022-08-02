@@ -10,7 +10,6 @@ export class ValidatorService {
   constructor(private userService: UserService) { }
 
   passwordMatch(password: string, confirmPassword: string): ValidatorFn {
-    console.log("tetetete");
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
 
@@ -49,19 +48,19 @@ export class ValidatorService {
       }
 
       //fetch the records matching to given email address if any
-      this.userService.checkIsEmailIdExist(emailControl?.value).subscribe((result) => {
-        console.log("Inside checkIsEmailIdExist");
-        console.log(result);
+      return this.userService.checkIsEmailIdExist(emailControl.value).subscribe((result) => {
+        emailControl.setErrors({ emailExist: result });
+        //return { emailExist: result };
       })
 
-      if (emailControl.value === 'sandeeppawar.pawar15@gmail.com') {
-        emailControl.setErrors({ emailExist: true });
-        return { emailExist: true };
-      } else {
-        console.log("in else", emailControl);
-        emailControl.setErrors(null);
-        return null;
-      }
+      // if (emailControl.value === 'sandeeppawar.pawar15@gmail.com') {
+      //   emailControl.setErrors({ emailExist: true });
+      //   return { emailExist: true };
+      // } else {
+      //   console.log("in else", emailControl);
+      //   emailControl.setErrors(null);
+      //   return null;
+      // }
 
     };
   }

@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  //baseurl = "http://localhost:90/api/users";
-   baseurl = "https://localhost:7210/api/Users";
+  baseurl = "http://localhost:90/api/users";
+  //  baseurl = "https://localhost:7210/api/Users";
 
   // postUrl = "https://jsonplaceholder.typicode.com/posts";
 
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   checkIsEmailIdExist(emailId: string) {
-    return this.http.get(this.baseurl + '/GetUserByEmail/' + emailId);
+    return this.http.get(this.baseurl + '/EmailExist?email=' + emailId);
   }
 
 }
