@@ -34,11 +34,13 @@ export class ValidatorService {
     };
   }
 
+
+  // check if email address already exist in the database.s
   isEmailExist(emailId: string): ValidatorFn {
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
-      const emailControl = formGroup.get(emailId);
-      console.log(emailControl?.value);
+      const emailControl = formGroup.get(emailId.trim());
+
       if (!emailControl) {
         return null;
       }
@@ -48,20 +50,30 @@ export class ValidatorService {
       }
 
       //fetch the records matching to given email address if any
-      return this.userService.checkIsEmailIdExist(emailControl.value).subscribe((result) => {
+      return this.userService.checkIsEmailIdExist(emailControl.value.trim()).subscribe((result) => {
         emailControl.setErrors({ emailExist: result });
-        //return { emailExist: result };
       })
+    };
+  }
 
-      // if (emailControl.value === 'sandeeppawar.pawar15@gmail.com') {
-      //   emailControl.setErrors({ emailExist: true });
-      //   return { emailExist: true };
-      // } else {
-      //   console.log("in else", emailControl);
-      //   emailControl.setErrors(null);
-      //   return null;
-      // }
+  // check if userName address already exist in the database.s
+  isUserNameExist(userName: string): ValidatorFn {
 
+    return (formGroup: AbstractControl): { [key: string]: any } | null => {
+      const userNameControl = formGroup.get(userName.trim());
+      console.log(userNameControl?.value);
+      if (!userNameControl) {
+        return null;
+      }
+
+      if (userNameControl.errors) {
+        return null;
+      }
+
+      //fetch the records matching to given userName if any
+      return this.userService.checkIsUserNameExist(userNameControl.value.trim()).subscribe((result) => {
+        userNameControl.setErrors({ userNameExist: result });
+      })
     };
   }
 

@@ -28,6 +28,10 @@ export class UserService {
     return this.http.delete(this.baseurl + '/' + userId);
   }
 
+  checkIsUserNameExist(userName: string) {
+    return this.http.get(this.baseurl + '/UserNameExist?userName=' + userName);
+  }
+
   checkIsEmailIdExist(emailId: string) {
     return this.http.get(this.baseurl + '/EmailExist?email=' + emailId);
   }

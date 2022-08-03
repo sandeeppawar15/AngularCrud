@@ -8,6 +8,7 @@
       </div>
       <div *ngIf="isSubmitted&&form.userName.errors" class="text-danger">
         <p *ngIf="form.userName.errors.required" class="errorMsg">Please enter username.</p>
+        <p *ngIf="form.userName.errors.userNameExist" class="errorMsg">Username address already exist.</p>
       </div>
     </div>
 
