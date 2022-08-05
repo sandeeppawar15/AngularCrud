@@ -47,13 +47,13 @@ export class AdduserComponent implements OnInit {
       userName: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      //email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      email: new FormControl('', {
-        validators: [
-          Validators.required,
-          Validators.pattern(this.emailPattern)
-        ]
-      }),
+      email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      // email: new FormControl('', {
+      //   validators: [
+      //     Validators.required,
+      //     Validators.pattern(this.emailPattern)
+      //   ]
+      // }),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('', Validators.compose([Validators.required])),
       roles: new FormControl('', Validators.required)
@@ -67,7 +67,7 @@ export class AdduserComponent implements OnInit {
   btnClick() {
     this.router.navigateByUrl('/userdashboard');
   }
- 
+
   //we can use "form" in html file to get the form field,basically it work as Alias to this.FormAddUser.controls
   get form() {
     return this.FormAddUser.controls;

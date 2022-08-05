@@ -27,7 +27,9 @@ export class ValidatorService {
       if (passwordControl.value !== confirmPasswordControl.value) {
         confirmPasswordControl.setErrors({ passwordMismatch: true });
         return { passwordMismatch: true };
+
       } else {
+
         confirmPasswordControl.setErrors(null);
         return null;
       }
@@ -50,9 +52,25 @@ export class ValidatorService {
       }
 
       //fetch the records matching to given email address if any
-      return this.userService.checkIsEmailIdExist(emailControl.value.trim()).subscribe((result) => {
-        emailControl.setErrors({ emailExist: result });
-      })
+      // return this.userService.checkIsEmailIdExist(emailControl.value.trim()).subscribe((result) => {
+      //   emailControl.setErrors({ emailExist: result });
+      //   return { emailExist: result };
+      // })
+
+      if (emailControl.value.trim() != '') {
+        var test: any = false;
+        this.userService.checkIsEmailIdExist(emailControl.value.trim()).subscribe((result) => {
+          if (String(result) === "true") {
+            emailControl.setErrors({ emailExist: true });
+            return { emailExist: true };
+          } else {
+            console.log("joshi");
+            emailControl.setErrors(null);
+            return null;
+          }
+        })
+      }
+      return null;
     };
   }
 
@@ -61,7 +79,7 @@ export class ValidatorService {
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
       const userNameControl = formGroup.get(userName.trim());
-      console.log(userNameControl?.value);
+
       if (!userNameControl) {
         return null;
       }
@@ -71,9 +89,25 @@ export class ValidatorService {
       }
 
       //fetch the records matching to given userName if any
-      return this.userService.checkIsUserNameExist(userNameControl.value.trim()).subscribe((result) => {
-        userNameControl.setErrors({ userNameExist: result });
-      })
+      // return this.userService.checkIsUserNameExist(userNameControl.value.trim()).subscribe((result) => {
+      //   userNameControl.setErrors({ userNameExist: result });
+      // })
+
+
+      if (userNameControl.value.trim() != '') {
+        var test: any = false;
+        this.userService.checkIsUserNameExist(userNameControl.value.trim()).subscribe((result) => {
+
+          if (String(result) === "true") {
+            userNameControl.setErrors({ userNameExist: true });
+            return { userNameExist: true };
+          } else {
+            userNameControl.setErrors(null);
+            return null;
+          }
+        })
+      }
+      return null;
     };
   }
 
