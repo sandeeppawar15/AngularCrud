@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../providers/user.service';
 import { ValidatorService } from '../providers/validator.service';
@@ -43,6 +43,7 @@ export class AdduserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.FormAddUser = new FormGroup({
       userName: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
