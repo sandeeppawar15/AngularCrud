@@ -34,9 +34,12 @@
       </td>
       <td class="text-center">{{user.createdOn | date: 'dd/MM/yyyy hh:mm a'}}</td>
       <td class="text-center">
-        <button class="btn btn-info"><i class="bi bi-pencil-square" title="Edit User"></i></button>
-        <button class="btn btn-danger mx-3" (click)="deleteUser(user.tblUserId)"><i class="bi bi-trash3-fill"
-            title="Delete User"></i> </button>
+        <button class="btn btn-info" (click)="editUser(user.tblUserId)">
+          <i class="bi bi-pencil-square" title="Edit User"></i>
+        </button>
+        <button class="btn btn-danger mx-3" (click)="deleteUser(user.tblUserId)">
+          <i class="bi bi-trash3-fill" title="Delete User"></i>
+        </button>
       </td>
     </tr>
 

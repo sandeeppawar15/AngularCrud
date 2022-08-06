@@ -4,6 +4,8 @@ import { AdduserComponent } from './adduser.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EdituserComponent } from './edituser.component';
+
 
 
 
@@ -12,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     UserdashboardComponent,
-    AdduserComponent
+    AdduserComponent,
+    EdituserComponent
   ],
   imports: [
     FormsModule ,
