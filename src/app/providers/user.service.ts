@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  baseurl = "http://localhost:90/api/users";
-  // baseurl = "https://localhost:7210/api/Users";
+  // baseUrl = "http://localhost:90/api/users";
+  baseUrl = "https://localhost:7210/api/Users";
   // postUrl = "https://jsonplaceholder.typicode.com/posts";
 
 
@@ -14,28 +14,40 @@ export class UserService {
 
   getData(userId?: number) {
     if (!isNaN(Number(userId))) {
-      return this.http.get(this.baseurl + '/' + userId);
+      return this.http.get(this.baseUrl + '/' + userId);
     }
-    return this.http.get(this.baseurl);
+    return this.http.get(this.baseUrl);
   }
 
   saveData(data: any) {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(data);
 
-    return this.http.post(this.baseurl + '/', body, { 'headers': headers });
+    return this.http.post(this.baseUrl + '/', body, { 'headers': headers });
   }
 
   deleteUser(userId: number) {
-    return this.http.delete(this.baseurl + '/' + userId);
+    return this.http.delete(this.baseUrl + '/' + userId);
   }
 
   checkIsUserNameExist(userName: string) {
-    return this.http.get(this.baseurl + '/UserNameExist?userName=' + userName);
+    return this.http.get(this.baseUrl + '/UserNameExist?userName=' + userName);
   }
 
   checkIsEmailIdExist(emailId: string) {
-    return this.http.get(this.baseurl + '/EmailExist?email=' + emailId);
+    return this.http.get(this.baseUrl + '/EmailExist?email=' + emailId);
   }
+
+  update(id: number, params: any) {
+    console.log("inside update");
+    
+    console.log(id);
+
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(params);
+
+    return this.http.put(`${this.baseUrl}/${id}`, body, { 'headers': headers });
+  }
+
 
 }

@@ -7,9 +7,9 @@
         <input type="text" class="form-control" id="Username" placeholder="Username" formControlName="userName">
       </div>
       <div *ngIf="isSubmitted&&form.userName.errors" class="text-danger">
-          <p *ngIf="form.userName.errors.required" class="errorMsg">Please enter username.</p>
-          <p *ngIf="form.userName.errors.userNameExist" class="errorMsg">Username address already exist.</p>
-        </div>
+        <p *ngIf="form.userName.errors.required" class="errorMsg">Please enter username.</p>
+        <p *ngIf="form.userName.errors.userNameExist" class="errorMsg">Username address already exist.</p>
+      </div>
     </div>
 
     <div class="form-group row">
@@ -17,9 +17,9 @@
       <div class="col-sm-3">
         <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
       </div>
-      <!-- <div *ngIf="isSubmitted&&form.firstName.errors" class="text-danger">
-          <p *ngIf="form.firstName.errors.required" class="errorMsg">Please enter first name.</p>
-        </div> -->
+      <div *ngIf="isSubmitted&&form.firstName.errors" class="text-danger">
+        <p *ngIf="form.firstName.errors.required" class="errorMsg">Please enter first name.</p>
+      </div>
     </div>
     <!-- {{FormAddUser.get('firstName')?.valid}} -->
 
@@ -28,9 +28,9 @@
       <div class="col-sm-3">
         <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
       </div>
-      <!-- <div *ngIf="isSubmitted&&form.lastName.errors" class="text-danger">
-          <p *ngIf="form.lastName.errors.required" class="errorMsg">Please enter last name.</p>
-        </div> -->
+      <div *ngIf="isSubmitted&&form.lastName.errors" class="text-danger">
+        <p *ngIf="form.lastName.errors.required" class="errorMsg">Please enter last name.</p>
+      </div>
     </div>
 
     <!-- <div class="form-group row">
@@ -60,9 +60,9 @@
           </option>
         </select>
       </div>
-      <!-- <div *ngIf=" isSubmitted&&form.roles.errors" class="text-danger">
-          <p *ngIf="form.roles.errors.required" class="errorMsg">Please select role.</p>
-        </div> -->
+      <div *ngIf=" isSubmitted&&form.roles.errors" class="text-danger">
+        <p *ngIf="form.roles.errors.required" class="errorMsg">Please select role.</p>
+      </div>
     </div>
 
     <div class="form-group row">
@@ -70,11 +70,11 @@
       <div class="col-sm-3">
         <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
       </div>
-      <!-- <div *ngIf="isSubmitted&&form.email.errors" class="text-danger">
-          <p *ngIf="form.email.errors.required" class="errorMsg">Please enter email id.</p>
-          <p *ngIf="form.email.errors.pattern" class="errorMsg">Please enter valid email address</p>
-          <p *ngIf="form.email.errors.emailExist" class="errorMsg">Email address already exist.</p>
-        </div> -->
+      <div *ngIf="isSubmitted&&form.email.errors" class="text-danger">
+        <p *ngIf="form.email.errors.required" class="errorMsg">Please enter email id.</p>
+        <p *ngIf="form.email.errors.pattern" class="errorMsg">Please enter valid email address</p>
+        <p *ngIf="form.email.errors.emailExist" class="errorMsg">Email address already exist.</p>
+      </div>
     </div>
 
     <!-- <div class="form-group row">
@@ -87,7 +87,8 @@
           <p *ngIf="form.password.errors.minlength" class="errorMsg">Password must be at least 6 characters</p>
         </div>
     </div> -->
-
+    <input type="hidden" class="form-control" id="password" placeholder="Password" formControlName="password"
+      value="MTExMTExQCM0NVVzZXRoaXNTZWNyZXRLZXle">
     <!-- <div class="form-group row">
       <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
       <div class="col-sm-3">
@@ -104,7 +105,9 @@
     <div class="form-group row">
       <div class="col-sm-4">
         <button type="button" class="btn btn-primary btnCls  mx-3" (click)="btnClick()">Back</button>
-          <button type="submit" class="btn btn-primary btnCls" (click)="submitForm()">Update</button>
+        <button type="submit" class="btn btn-primary btnCls" (click)="updateUser()">Update</button>
+        <input type="hidden" id="tblUserId" formcontrolname="tblUserId" value="{{user.tblUserId}}">
+
       </div>
     </div>
   </form>

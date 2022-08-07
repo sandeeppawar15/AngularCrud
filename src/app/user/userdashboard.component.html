@@ -8,7 +8,7 @@
     </div>
   </div>
 </nav>
-<table class="table mt-3 table-bordered">
+<table class="table mt-3 table-bordered table-sm table-striped table-hover">
   <thead style="background-color: skyblue;">
     <tr class="text-center">
       <th scope="col">User ID</th>
@@ -34,11 +34,11 @@
       </td>
       <td class="text-center">{{user.createdOn | date: 'dd/MM/yyyy hh:mm a'}}</td>
       <td class="text-center">
-        <button class="btn btn-info" (click)="editUser(user.tblUserId)">
+        <button class="btn btn-info btn-sm" (click)="editUser(user.tblUserId)">
           <i class="bi bi-pencil-square" title="Edit User"></i>
         </button>
-        <button class="btn btn-danger mx-3" (click)="deleteUser(user.tblUserId)">
-          <i class="bi bi-trash3-fill" title="Delete User"></i>
+        <button class="btn btn-danger mx-1 btn-sm" (click)="deleteUser(user.tblUserId)">
+          <i class="bi bi-trash3-fill" title="Delete User" (click)="deleteUser(user.tblUserId)"></i>
         </button>
       </td>
     </tr>

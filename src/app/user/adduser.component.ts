@@ -58,7 +58,8 @@ export class AdduserComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('', Validators.compose([Validators.required])),
       roles: new FormControl('', Validators.required)
-    },
+    }
+    ,
       {
         validators: [this.v.passwordMatch("password", "confirmPassword"), this.v.isEmailExist("email"), this.v.isUserNameExist("userName")]
       }
@@ -81,6 +82,7 @@ export class AdduserComponent implements OnInit {
     if (this.FormAddUser.invalid) {
       return
     }
+    
     let frmData: {
       fk_tblRoleId: Number,
       firstName: string,
