@@ -29,6 +29,7 @@ export class AdduserComponent implements OnInit {
       , { TblRoleId: 3, role: "Super Admin" }
     ];
 
+  alert: boolean = false;
   roleid: number;
   FormAddUser: FormGroup;
   isSubmitted: boolean;
@@ -59,7 +60,7 @@ export class AdduserComponent implements OnInit {
       confirmPassword: new FormControl('', Validators.compose([Validators.required])),
       roles: new FormControl('', Validators.required)
     }
-    ,
+      ,
       {
         validators: [this.v.passwordMatch("password", "confirmPassword"), this.v.isEmailExist("email"), this.v.isUserNameExist("userName")]
       }
@@ -68,6 +69,10 @@ export class AdduserComponent implements OnInit {
 
   btnClick() {
     this.router.navigateByUrl('/userdashboard');
+  }
+
+  close() {
+    this.alert = false;
   }
 
   //we can use "form" in html file to get the form field,basically it work as Alias to this.FormAddUser.controls
@@ -82,7 +87,7 @@ export class AdduserComponent implements OnInit {
     if (this.FormAddUser.invalid) {
       return
     }
-    
+
     let frmData: {
       fk_tblRoleId: Number,
       firstName: string,
@@ -110,10 +115,13 @@ export class AdduserComponent implements OnInit {
     this.userService.saveData(frmData).subscribe((result) => {
       console.log("Inside savedata");
       console.log(result);
-      alert("Record has been added successfully.");
-      this.router.navigateByUrl('/userdashboard');
+      this.alert = true;
 
+      // alert("Record has been added successfully.");
+      // this.router.navigateByUrl('/userdashboard');
     })
+    this.FormAddUser.reset({});
+
     console.log(JSON.stringify(this.FormAddUser.value));
   }
 

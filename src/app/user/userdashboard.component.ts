@@ -11,6 +11,7 @@ import { UserService } from '../providers/user.service';
 export class UserdashboardComponent implements OnInit {
 
   users: any;
+  alert: boolean = false;
 
   constructor(private _router: Router, private _userService: UserService, private _route: ActivatedRoute) {
 
@@ -29,12 +30,23 @@ export class UserdashboardComponent implements OnInit {
     this._router.navigateByUrl('/adduser');
   }
 
+  close() {
+    this.alert = false;
+  }
+
   deleteUser(userId: any) {
 
     this._userService.deleteUser(userId).subscribe((result) => {
 
-      alert("Record has been deleted successfully.");
-      location.reload();
+
+      this.alert = true;
+      setInterval(() => {
+        // console.log("fdfdf");
+        location.reload();
+      }, 2500);
+
+      //alert("Record has been deleted successfully.");
+
     });
   }
 

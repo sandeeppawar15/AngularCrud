@@ -8,7 +8,13 @@
     </div>
   </div>
 </nav>
-<table class="table mt-3 table-bordered table-sm table-striped table-hover">
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Record has been deleted successfully.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<table class="table table-bordered table-sm table-striped table-hover">
   <thead style="background-color: skyblue;">
     <tr class="text-center">
       <th scope="col">User ID</th>
@@ -42,6 +48,7 @@
         </button>
       </td>
     </tr>
+
 
   </tbody>
 </table>
