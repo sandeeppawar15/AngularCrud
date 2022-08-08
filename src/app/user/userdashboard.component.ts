@@ -37,16 +37,10 @@ export class UserdashboardComponent implements OnInit {
   deleteUser(userId: any) {
 
     this._userService.deleteUser(userId).subscribe((result) => {
-
-
       this.alert = true;
       setInterval(() => {
-        // console.log("fdfdf");
         location.reload();
       }, 2500);
-
-      //alert("Record has been deleted successfully.");
-
     });
   }
 

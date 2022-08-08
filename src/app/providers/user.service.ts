@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   baseUrl = "http://localhost:90/api/users";
-  // baseUrl = "https://localhost:7210/api/Users";
+  //baseUrl = "https://localhost:7210/api/Users";
   // postUrl = "https://jsonplaceholder.typicode.com/posts";
 
 
@@ -40,7 +40,7 @@ export class UserService {
 
   update(id: number, params: any) {
     console.log("inside update");
-    
+
     console.log(id);
 
     const headers = { 'content-type': 'application/json' }

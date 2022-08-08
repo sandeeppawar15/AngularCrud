@@ -113,15 +113,22 @@ export class AdduserComponent implements OnInit {
     };
 
     this.userService.saveData(frmData).subscribe((result) => {
-      console.log("Inside savedata");
-      console.log(result);
+
       this.alert = true;
+      //below code is added to reset the error messages of form field after submitting the form, so that error messages will 
+      //not render after form submission.
+      Object.keys(this.FormAddUser.controls).forEach((key) => {
+        const control = this.FormAddUser.controls[key];
+        control.setErrors(null);
 
-      // alert("Record has been added successfully.");
-      // this.router.navigateByUrl('/userdashboard');
+        setInterval(() => {
+          this.router.navigateByUrl('/userdashboard');
+        }, 2500);
+
+      });
+
+
     })
-    this.FormAddUser.reset({});
-
     console.log(JSON.stringify(this.FormAddUser.value));
   }
 
