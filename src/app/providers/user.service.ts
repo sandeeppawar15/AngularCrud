@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  baseUrl = "http://localhost:90/api/users";
-  //baseUrl = "https://localhost:7210/api/Users";
+  // baseUrl = "http://localhost:90/api/users";
+  baseUrl = "https://localhost:7210/api/Users";
   // postUrl = "https://jsonplaceholder.typicode.com/posts";
 
 
@@ -30,22 +30,25 @@ export class UserService {
     return this.http.delete(this.baseUrl + '/' + userId);
   }
 
-  checkIsUserNameExist(userName: string) {
+  checkIsUserNameExist(userName: string, id?: number) {
+
+    if (!isNaN(Number(id))) {
+      return this.http.get(this.baseUrl + '/UserNameExist?userName=' + userName + '&id=' + id);
+    }
     return this.http.get(this.baseUrl + '/UserNameExist?userName=' + userName);
   }
 
-  checkIsEmailIdExist(emailId: string) {
+  checkIsEmailIdExist(emailId: string, id?: number) {
+
+    if (!isNaN(Number(id))) {
+      return this.http.get(this.baseUrl + '/EmailExist?email=' + emailId + '&id=' + id);
+    }
     return this.http.get(this.baseUrl + '/EmailExist?email=' + emailId);
   }
 
   update(id: number, params: any) {
-    console.log("inside update");
-
-    console.log(id);
-
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(params);
-
     return this.http.put(`${this.baseUrl}/${id}`, body, { 'headers': headers });
   }
 

@@ -38,7 +38,7 @@ export class ValidatorService {
 
 
   // check if email address already exist in the database.s
-  isEmailExist(emailId: string): ValidatorFn {
+  isEmailExist(emailId: string, id?: number): ValidatorFn {
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
       const emailControl = formGroup.get(emailId.trim());
@@ -59,7 +59,7 @@ export class ValidatorService {
 
       if (emailControl.value.trim() != '') {
         var test: any = false;
-        this.userService.checkIsEmailIdExist(emailControl.value.trim()).subscribe((result) => {
+        this.userService.checkIsEmailIdExist(emailControl.value.trim(), id).subscribe((result) => {
           if (String(result) === "true") {
             emailControl.setErrors({ emailExist: true });
             return { emailExist: true };
@@ -75,7 +75,7 @@ export class ValidatorService {
   }
 
   // check if userName address already exist in the database.s
-  isUserNameExist(userName: string): ValidatorFn {
+  isUserNameExist(userName: string, id?: number): ValidatorFn {
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
       const userNameControl = formGroup.get(userName.trim());
@@ -96,7 +96,7 @@ export class ValidatorService {
 
       if (userNameControl.value.trim() != '') {
         var test: any = false;
-        this.userService.checkIsUserNameExist(userNameControl.value.trim()).subscribe((result) => {
+        this.userService.checkIsUserNameExist(userNameControl.value.trim(), id).subscribe((result) => {
 
           if (String(result) === "true") {
             userNameControl.setErrors({ userNameExist: true });

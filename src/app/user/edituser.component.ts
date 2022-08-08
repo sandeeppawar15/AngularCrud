@@ -51,7 +51,7 @@ export class EdituserComponent implements OnInit {
           //tblUserId: new FormControl(this.user['tblUserId'])
         },
           {
-            validators: [this.v.isEmailExist("email"), this.v.isUserNameExist("userName")]
+            validators: [this.v.isEmailExist("email", this.user["tblUserId"]), this.v.isUserNameExist("userName", this.user["tblUserId"])]
           });
       })
     }
@@ -94,12 +94,11 @@ export class EdituserComponent implements OnInit {
         Object.keys(this.FormEditUser.controls).forEach((key) => {
           const control = this.FormEditUser.controls[key];
           control.setErrors(null);
-
-          setInterval(() => {
-            this._router.navigateByUrl('/userdashboard');
-          }, 2500);
-
         });
+
+        setTimeout(() => {
+          this._router.navigateByUrl('/userdashboard');
+        }, 2000);
       })
     }
   }
