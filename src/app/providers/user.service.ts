@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  // baseUrl = "http://localhost:90/api/users";
-  baseUrl = "https://localhost:7210/api/Users";
-  // postUrl = "https://jsonplaceholder.typicode.com/posts";
+  baseUrl = "http://localhost:90/api/users";
+  //baseUrl = "https://localhost:7210/api/Users";
+  //postUrl = "https://jsonplaceholder.typicode.com/posts";
 
 
   constructor(private http: HttpClient) { }
@@ -29,6 +29,11 @@ export class UserService {
   deleteUser(userId: number) {
     return this.http.delete(this.baseUrl + '/' + userId);
   }
+
+  changeStatus(userId: number) {
+    return this.http.delete(this.baseUrl + '/' + userId);
+  }
+
 
   checkIsUserNameExist(userName: string, id?: number) {
 

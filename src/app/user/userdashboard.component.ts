@@ -34,7 +34,9 @@ export class UserdashboardComponent implements OnInit {
     this.alert = false;
   }
 
-  deleteUser(userId: any) {
+  deleteUser(userId: number) {
+
+    //confirm("Are you sure?") ? true : false;
 
     this._userService.deleteUser(userId).subscribe((result) => {
       this.alert = true;
@@ -49,4 +51,14 @@ export class UserdashboardComponent implements OnInit {
     this._router.navigateByUrl('/edituser/' + userId);
   }
 
+  changeStatus(userId: number) {
+    this._userService.changeStatus(userId).subscribe((result) => {
+
+      this.alert = true;
+      setInterval(() => {
+        location.reload();
+      }, 2500);
+
+    });
+  }
 }

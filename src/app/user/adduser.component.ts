@@ -120,13 +120,11 @@ export class AdduserComponent implements OnInit {
       Object.keys(this.FormAddUser.controls).forEach((key) => {
         const control = this.FormAddUser.controls[key];
         control.setErrors(null);
-
-        setInterval(() => {
-          this.router.navigateByUrl('/userdashboard');
-        }, 2500);
-
       });
 
+      setTimeout(() => {
+        this.router.navigateByUrl('/userdashboard');
+      }, 2500);
 
     })
     console.log(JSON.stringify(this.FormAddUser.value));
