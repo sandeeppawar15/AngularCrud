@@ -51,8 +51,8 @@ export class UserdashboardComponent implements OnInit {
     this._router.navigateByUrl('/edituser/' + userId);
   }
 
-  changeStatus(userId: number) {
-    this._userService.changeStatus(userId).subscribe((result) => {
+  changeStatus(userId: number, status: boolean) {
+    this._userService.changeStatus(userId, status).subscribe((result) => {
 
       this.alert = true;
       setInterval(() => {

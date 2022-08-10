@@ -23,6 +23,7 @@
       <th scope="col">Email Id</th>
       <th scope="col">Status</th>
       <th scope="col">Registered On</th>
+      <th scope="col">Last Updated On</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -34,11 +35,12 @@
       <td>{{user.userName| titlecase}}</td>
       <td>{{user.emailId}}</td>
       <td class="text-center" *ngIf="user.status===true"><i class="bi bi-person-check-fill" style="color:green"
-          title="User is active"></i></td>
+          title="User is active" (click)="changeStatus(user.tblUserId,user.status)"></i></td>
       <td class="text-center" *ngIf="user.status===false"><i class="bi bi-person-check" style="color:red"
-          title="User is inactive"></i>
+          title="User is inactive" (click)="changeStatus(user.tblUserId,user.status)"></i>
       </td>
       <td class="text-center">{{user.createdOn | date: 'dd/MM/yyyy hh:mm a'}}</td>
+      <td class="text-center">{{user.updatedOn | date: 'dd/MM/yyyy hh:mm a'}}</td>
       <td class="text-center">
         <button class="btn btn-info btn-sm" (click)="editUser(user.tblUserId)">
           <i class="bi bi-pencil-square" title="Edit User"></i>
@@ -48,7 +50,5 @@
         </button>
       </td>
     </tr>
-
-
   </tbody>
 </table>

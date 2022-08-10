@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  baseUrl = "http://localhost:90/api/users";
-  //baseUrl = "https://localhost:7210/api/Users";
+  // baseUrl = "http://localhost:90/api/users";
+  baseUrl = "https://localhost:7210/api/Users";
   //postUrl = "https://jsonplaceholder.typicode.com/posts";
 
 
@@ -30,8 +30,15 @@ export class UserService {
     return this.http.delete(this.baseUrl + '/' + userId);
   }
 
-  changeStatus(userId: number) {
-    return this.http.delete(this.baseUrl + '/' + userId);
+  changeStatus(id: number, status: boolean) {
+
+    console.log(id, " | ", status);
+
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify({});
+
+    // return this.http.put(this.baseUrl + '/', body, { 'headers': headers });
+    return this.http.put(this.baseUrl + '/changeStatus?id=' + id + '&status=' + status, body);
   }
 
 
