@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidatorService } from './providers/validator.service';
 import { BarchartComponent } from './chart/barchart/barchart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { BarchartComponent } from './chart/barchart/barchart.component';
     // FormsModule,
     // ReactiveFormsModule,  
   // -----------------------------
-    UserModule
+    UserModule,
+    NgChartsModule
   ],
   providers: [ValidatorService],
   bootstrap: [AppComponent]
