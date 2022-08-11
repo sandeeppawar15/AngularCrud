@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../providers/user.service';
 import { ValidatorService } from '../providers/validator.service';
@@ -31,7 +31,7 @@ export class AdduserComponent implements OnInit {
 
   alert: boolean = false;
   roleid: number;
-  FormAddUser: FormGroup;
+  FormAddUser: UntypedFormGroup;
   isSubmitted: boolean;
   emailPattern = "^[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   pipe: any;
@@ -45,20 +45,20 @@ export class AdduserComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.FormAddUser = new FormGroup({
-      userName: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+    this.FormAddUser = new UntypedFormGroup({
+      userName: new UntypedFormControl('', Validators.required),
+      firstName: new UntypedFormControl('', Validators.required),
+      lastName: new UntypedFormControl('', Validators.required),
+      email: new UntypedFormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       // email: new FormControl('', {
       //   validators: [
       //     Validators.required,
       //     Validators.pattern(this.emailPattern)
       //   ]
       // }),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmPassword: new FormControl('', Validators.compose([Validators.required])),
-      roles: new FormControl('', Validators.required)
+      password: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new UntypedFormControl('', Validators.compose([Validators.required])),
+      roles: new UntypedFormControl('', Validators.required)
     }
       ,
       {
