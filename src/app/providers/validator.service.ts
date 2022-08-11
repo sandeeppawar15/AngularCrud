@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { UserService } from './user.service';
 
 
@@ -37,7 +37,7 @@ export class ValidatorService {
   }
 
 
-  // check if email address already exist in the database.s
+  // check if email address already exist in the database.
   isEmailExist(emailId: string, id?: number): ValidatorFn {
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
@@ -50,12 +50,6 @@ export class ValidatorService {
       if (emailControl.errors) {
         return null;
       }
-
-      //fetch the records matching to given email address if any
-      // return this.userService.checkIsEmailIdExist(emailControl.value.trim()).subscribe((result) => {
-      //   emailControl.setErrors({ emailExist: result });
-      //   return { emailExist: result };
-      // })
 
       if (emailControl.value.trim() != '') {
         var test: any = false;
@@ -74,7 +68,7 @@ export class ValidatorService {
     };
   }
 
-  // check if userName address already exist in the database.s
+  // check if userName address already exist in the database.
   isUserNameExist(userName: string, id?: number): ValidatorFn {
 
     return (formGroup: AbstractControl): { [key: string]: any } | null => {
@@ -87,12 +81,6 @@ export class ValidatorService {
       if (userNameControl.errors) {
         return null;
       }
-
-      //fetch the records matching to given userName if any
-      // return this.userService.checkIsUserNameExist(userNameControl.value.trim()).subscribe((result) => {
-      //   userNameControl.setErrors({ userNameExist: result });
-      // })
-
 
       if (userNameControl.value.trim() != '') {
         var test: any = false;
@@ -110,5 +98,4 @@ export class ValidatorService {
       return null;
     };
   }
-
 }
