@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular 11 | DemoApp';
+  title = 'Angular 14 | DemoApp';
 }
 
 

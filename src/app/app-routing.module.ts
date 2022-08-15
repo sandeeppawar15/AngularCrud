@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: "adduser", component: AdduserComponent },
   { path: "userdashboard", component: UserdashboardComponent },
   { path: "edituser/:id", component: EdituserComponent },
-  { path: "barcharts", component: BarchartComponent }
+  { path: "chart/barchart", component: BarchartComponent }
 
 ];
 
