@@ -11,12 +11,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidatorService } from './providers/validator.service';
 import { BarchartComponent } from './chart/barchart/barchart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SigninComponent } from './signin/signin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BarchartComponent
+    BarchartComponent,
+    SigninComponent
     
   ],
   imports: [
@@ -25,7 +27,7 @@ import { NgChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     CommonModule, 
     // FormsModule,
-    // ReactiveFormsModule,  
+    ReactiveFormsModule,  
   // -----------------------------
     UserModule,
     NgChartsModule

@@ -41,6 +41,9 @@ export class AdduserComponent implements OnInit {
     this.userService.getData().subscribe(data => {
       console.log(data)
     });
+
+    
+
   }
 
   ngOnInit(): void {
