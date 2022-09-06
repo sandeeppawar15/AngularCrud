@@ -6,16 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class SigninService {
 
-  baseUrl = "http://localhost:90/api/users";
+  baseUrl = "http://localhost:90/api/UserAuth";
+  // baseUrl = "https://localhost:7210/api/UserAuth";
 
   constructor(private http: HttpClient) { }
 
 
-  signIn(userName: string, password: string) {
-    console.log("userName=>" + userName);
-    console.log("password=>" + password);
-    return true;
+  signIn(data: any) {
+    
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(data);
+    return this.http.post(this.baseUrl + '/', body, { 'headers': headers });
   }
-
 
 }

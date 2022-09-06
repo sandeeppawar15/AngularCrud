@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { SigninService } from '../providers/signin.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,15 +13,16 @@ export class SigninComponent implements OnInit {
   alert: boolean = false;
   FormSignin: UntypedFormGroup;
   isSubmitted: boolean;
+  array: any;
 
-  constructor() { }
+  constructor(private _signinService: SigninService) { }
 
   ngOnInit(): void {
 
     this.FormSignin = new UntypedFormGroup({
-      userName: new UntypedFormControl('', Validators.required),
-      password: new UntypedFormControl('', Validators.required),
 
+      userName: new UntypedFormControl('', Validators.required),
+      password: new UntypedFormControl('', Validators.required)
     });
   }
 
@@ -30,6 +32,7 @@ export class SigninComponent implements OnInit {
   }
 
   submitForm() {
+
     this.isSubmitted = true;
 
     if (this.FormSignin.invalid) {
@@ -44,5 +47,17 @@ export class SigninComponent implements OnInit {
       "userName": this.FormSignin.value['userName'],
       "password": this.FormSignin.value['password']
     };
+
+    frmData.password = btoa(frmData.password + "@#45UsethisSecretKey^");
+    this._signinService.signIn(frmData).subscribe(
+      result => {
+        this.array = JSON.parse(JSON.stringify(result));
+        console.log("test => " + this.array["password"]);
+
+        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"], password: this.array["password"] }));
+
+      });
+
+
   }
 }
