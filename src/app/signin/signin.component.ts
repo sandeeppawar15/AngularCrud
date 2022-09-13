@@ -31,6 +31,10 @@ export class SigninComponent implements OnInit {
     return this.FormSignin.controls;
   }
 
+  close() {
+    this.alert = false;
+  }
+
   submitForm() {
 
     this.isSubmitted = true;
@@ -48,15 +52,29 @@ export class SigninComponent implements OnInit {
       "password": this.FormSignin.value['password']
     };
 
-    frmData.password = btoa(frmData.password + "@#45UsethisSecretKey^");
+    // frmData.password = btoa(frmData.password + "@#45UsethisSecretKey^");
     this._signinService.signIn(frmData).subscribe(
       result => {
-        this.array = JSON.parse(JSON.stringify(result));
-        console.log("test => " + this.array["password"]);
 
+        console.log("Before");
+
+        console.log(result);
+        this.array = JSON.parse(JSON.stringify(result));
+        console.log("After");
+
+        console.log(this.array);
         localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"], password: this.array["password"] }));
 
-      });
+      },
+      (error) => {
+        console.log("in error");
+        this.array = JSON.parse(JSON.stringify(error));
+        console.log(error.status);
+        console.log(this.array);
+        this.alert = true;
+
+      }
+    );
 
 
   }
