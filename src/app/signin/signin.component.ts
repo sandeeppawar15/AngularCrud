@@ -11,6 +11,7 @@ export class SigninComponent implements OnInit {
 
 
   alert: boolean = false;
+  errorMsg: string;
   FormSignin: UntypedFormGroup;
   isSubmitted: boolean;
   array: any;
@@ -55,27 +56,25 @@ export class SigninComponent implements OnInit {
     // frmData.password = btoa(frmData.password + "@#45UsethisSecretKey^");
     this._signinService.signIn(frmData).subscribe(
       result => {
-
-        console.log("Before");
-
-        console.log(result);
         this.array = JSON.parse(JSON.stringify(result));
-        console.log("After");
-
         console.log(this.array);
-        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"], password: this.array["password"] }));
+        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"] }));
 
       },
       (error) => {
-        console.log("in error");
+
         this.array = JSON.parse(JSON.stringify(error));
-        console.log(error.status);
-        console.log(this.array);
+
         this.alert = true;
 
-      }
-    );
+        if (this.array["error"] == "no_record_found") {
+          this.errorMsg = "invalid credentials";
+        } else if (this.array["error"] == "user_inactive") {
+          this.errorMsg = "your account is not active";
+        } else {
+          this.errorMsg = "something went wrong, please try later";
+        }
 
-
+      });
   }
 }
