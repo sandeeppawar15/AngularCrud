@@ -58,8 +58,7 @@ export class SigninComponent implements OnInit {
       result => {
         this.array = JSON.parse(JSON.stringify(result));
         console.log(this.array);
-        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"] }));
-
+        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"], userId: this.array["tblUserId"] }));
       },
       (error) => {
 
