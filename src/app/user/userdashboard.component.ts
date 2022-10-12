@@ -12,10 +12,17 @@ export class UserdashboardComponent implements OnInit {
 
   users: any;
   alert: boolean = false;
+  sessionArr: any;
 
   constructor(private _router: Router, private _userService: UserService, private _route: ActivatedRoute) {
 
+    let session: any = localStorage.getItem('currentUser');
+    this.sessionArr = JSON.parse(session);
+    if (this.sessionArr["userName"] == '') {
+      this._router.navigateByUrl('/signin');
 
+      //implement the role based acces login here 
+    }
   }
 
   ngOnInit(): void {

@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class SigninService {
 
-  baseUrl = "http://localhost:90/api/UserAuth";
-  // baseUrl = "https://localhost:7210/api/UserAuth";
+  // baseUrl = "http://localhost:90/api/UserAuth";
+  baseUrl = "https://localhost:7210/api/UserAuth";
 
   constructor(private http: HttpClient) { }
 

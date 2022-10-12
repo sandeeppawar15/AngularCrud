@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SigninService } from '../providers/signin.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class SigninComponent implements OnInit {
   isSubmitted: boolean;
   array: any;
 
-  constructor(private _signinService: SigninService) { }
+  constructor(private _router: Router, private _signinService: SigninService) { }
 
   ngOnInit(): void {
 
@@ -58,7 +59,9 @@ export class SigninComponent implements OnInit {
       result => {
         this.array = JSON.parse(JSON.stringify(result));
         console.log(this.array);
-        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"], userId: this.array["tblUserId"] }));
+        localStorage.setItem('currentUser', JSON.stringify({ userName: this.array["userName"], userId: this.array["tblUserId"], userRoleId: this.array['fk_tblRoleId'] }));
+        this._router.navigateByUrl('/userdashboard');
+
       },
       (error) => {
 
