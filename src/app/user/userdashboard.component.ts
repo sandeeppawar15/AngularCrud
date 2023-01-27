@@ -18,11 +18,11 @@ export class UserdashboardComponent implements OnInit {
 
     let session: any = localStorage.getItem('currentUser');
     this.sessionArr = JSON.parse(session);
-    if (this.sessionArr["userName"] == '') {
-      this._router.navigateByUrl('/signin');
+    // if (this.sessionArr["userName"] == '') {
+    //   this._router.navigateByUrl('/signin');
 
-      //implement the role based acces login access here 
-    }
+    //   //implement the role based acces login access here 
+    // }
   }
 
   ngOnInit(): void {
